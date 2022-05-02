@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Actions\SendToStripe;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::post('order/{order}/checkout', SendToStripe::class)->name('order.checkout');
 });
